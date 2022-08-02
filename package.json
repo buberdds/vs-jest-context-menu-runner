@@ -1,113 +1,113 @@
 {
-	"name": "jestcontextmenurunner",
-	"displayName": "Jest Context Menu Runner",
-	"icon": "images/icon.png",
-	"description": "",
-	"publisher": "modifiz",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/buberdds/vs-jest-context-menu-runner"
-	},
-	"homepage": "https://github.com/buberdds/vs-jest-context-menu-runner#readme",
-	"version": "0.0.3",
-	"engines": {
-		"vscode": "^1.57.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"onCommand:jestcontextmenurunner.singleWatch",
-		"onCommand:jestcontextmenurunner.single",
-		"onCommand:jestcontextmenurunner.allWatch",
-		"onCommand:jestcontextmenurunner.all"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "jestcontextmenurunner.singleWatch",
-				"title": "Jest: run single file in watch mode"
-			},
-			{
-				"command": "jestcontextmenurunner.single",
-				"title": "Jest: run single file"
-			},
-			{
-				"command": "jestcontextmenurunner.all",
-				"title": "Jest: run all"
-			},
-			{
-				"command": "jestcontextmenurunner.allWatch",
-				"title": "Jest: run all in watch mode"
-			}
-		],
-		"menus": {
-			"explorer/context": [
-				{
-					"when": "resourceFilename =~ /.*?(?=\\.spec|\\.test).*?\\.[jt]sx?/",
-					"command": "jestcontextmenurunner.singleWatch",
-					"group": "jestcontextmenurunner@1"
-				},
-				{
-					"when": "resourceFilename =~ /.*?(?=\\.spec|\\.test).*?\\.[jt]sx?/",
-					"command": "jestcontextmenurunner.single",
-					"group": "jestcontextmenurunner@2"
-				},
-				{
-					"when": "resourceFilename =~ /.*?(?=\\.spec|\\.test).*?\\.[jt]sx?/",
-					"command": "jestcontextmenurunner.all",
-					"group": "jestcontextmenurunner@3"
-				},
-				{
-					"when": "resourceFilename =~ /.*?(?=\\.spec|\\.test).*?\\.[jt]sx?/",
-					"command": "jestcontextmenurunner.allWatch",
-					"group": "jestcontextmenurunner@4"
-				}
-			],
-			"editor/title/context": [
-				{
-					"when": "resourceFilename =~ /.*?(?=\\.spec|\\.test).*?\\.[jt]sx?/",
-					"command": "jestcontextmenurunner.singleWatch",
-					"group": "jestcontextmenurunner@1"
-				},
-				{
-					"when": "resourceFilename =~ /.*?(?=\\.spec|\\.test).*?\\.[jt]sx?/",
-					"command": "jestcontextmenurunner.single",
-					"group": "jestcontextmenurunner@2"
-				},
-				{
-					"when": "resourceFilename =~ /.*?(?=\\.spec|\\.test).*?\\.[jt]sx?/",
-					"command": "jestcontextmenurunner.all",
-					"group": "jestcontextmenurunner@3"
-				},
-				{
-					"when": "resourceFilename =~ /.*?(?=\\.spec|\\.test).*?\\.[jt]sx?/",
-					"command": "jestcontextmenurunner.allWatch",
-					"group": "jestcontextmenurunner@4"
-				}
-			]
-		}
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile && npm run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.57.0",
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.2.2",
-		"@types/node": "14.x",
-		"eslint": "^7.27.0",
-		"@typescript-eslint/eslint-plugin": "^4.26.0",
-		"@typescript-eslint/parser": "^4.26.0",
-		"glob": "^7.1.7",
-		"mocha": "^8.4.0",
-		"typescript": "^4.3.2",
-		"vscode-test": "^1.5.2"
-	}
+  "name": "jestcontextmenurunner",
+  "displayName": "Jest Context Menu Runner",
+  "icon": "images/icon.png",
+  "description": "",
+  "publisher": "modifiz",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/buberdds/vs-jest-context-menu-runner"
+  },
+  "homepage": "https://github.com/buberdds/vs-jest-context-menu-runner#readme",
+  "version": "0.0.5",
+  "engines": {
+    "vscode": "^1.57.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:jestcontextmenurunner.singleWatch",
+    "onCommand:jestcontextmenurunner.single",
+    "onCommand:jestcontextmenurunner.allWatch",
+    "onCommand:jestcontextmenurunner.all"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "jestcontextmenurunner.singleWatch",
+        "title": "Jest: run single file in watch mode"
+      },
+      {
+        "command": "jestcontextmenurunner.single",
+        "title": "Jest: run single file"
+      },
+      {
+        "command": "jestcontextmenurunner.all",
+        "title": "Jest: run all"
+      },
+      {
+        "command": "jestcontextmenurunner.allWatch",
+        "title": "Jest: run all in watch mode"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "resourceFilename =~ /.*?(?=\\.spec|\\.test|\\-test).*?\\.[jt]sx?/",
+          "command": "jestcontextmenurunner.singleWatch",
+          "group": "jestcontextmenurunner@1"
+        },
+        {
+          "when": "resourceFilename =~ /.*?(?=\\.spec|\\.test|\\-test).*?\\.[jt]sx?/",
+          "command": "jestcontextmenurunner.single",
+          "group": "jestcontextmenurunner@2"
+        },
+        {
+          "when": "resourceFilename =~ /.*?(?=\\.spec|\\.test|\\-test).*?\\.[jt]sx?/",
+          "command": "jestcontextmenurunner.all",
+          "group": "jestcontextmenurunner@3"
+        },
+        {
+          "when": "resourceFilename =~ /.*?(?=\\.spec|\\.test|\\-test).*?\\.[jt]sx?/",
+          "command": "jestcontextmenurunner.allWatch",
+          "group": "jestcontextmenurunner@4"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "when": "resourceFilename =~ /.*?(?=\\.spec|\\.test|\\-test).*?\\.[jt]sx?/",
+          "command": "jestcontextmenurunner.singleWatch",
+          "group": "jestcontextmenurunner@1"
+        },
+        {
+          "when": "resourceFilename =~ /.*?(?=\\.spec|\\.test|\\-test).*?\\.[jt]sx?/",
+          "command": "jestcontextmenurunner.single",
+          "group": "jestcontextmenurunner@2"
+        },
+        {
+          "when": "resourceFilename =~ /.*?(?=\\.spec|\\.test|\\-test).*?\\.[jt]sx?/",
+          "command": "jestcontextmenurunner.all",
+          "group": "jestcontextmenurunner@3"
+        },
+        {
+          "when": "resourceFilename =~ /.*?(?=\\.spec|\\.test|\\-test).*?\\.[jt]sx?/",
+          "command": "jestcontextmenurunner.allWatch",
+          "group": "jestcontextmenurunner@4"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.57.0",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "14.x",
+    "eslint": "^7.27.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "glob": "^7.1.7",
+    "mocha": "^8.4.0",
+    "typescript": "^4.3.2",
+    "vscode-test": "^1.5.2"
+  }
 }
