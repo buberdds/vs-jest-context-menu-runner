@@ -1,4 +1,5 @@
 import { commands, window, ExtensionContext, Uri } from 'vscode';
+import { escapeRegExpForPath, normalizePath, quote } from './util';
 
 export function activate({ subscriptions }: ExtensionContext) {
   let NEXT_TERM_ID = 1;
@@ -51,6 +52,7 @@ function getFileName(uri: Uri): string {
 
 function executeCommandInTerminal(id: number, cmd = ''): void {
   const terminal = window.createTerminal(`Ext Terminal #${id}`);
+  const escapedFilePath = quote(escapeRegExpForPath(normalizePath(cmd)));
   terminal.show(true);
-  terminal.sendText(`npm run env -- jest --color ${cmd}`);
+  terminal.sendText(`npm run env -- jest --color ${escapedFilePath}`);
 }
