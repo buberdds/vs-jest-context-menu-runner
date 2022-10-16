@@ -1,16 +1,9 @@
-import { execSync } from 'child_process';
-
 export function isWindows(): boolean {
     return process.platform.includes('win32');
 }
 
 export function normalizePath(path: string): string {
     return isWindows() ? path.replace(/\\/g, '/') : path;
-}
-
-export function escapeRegExp(s: string): string {
-    const escapedString = s.replace(/[.*+?^${}<>()|[\]\\]/g, '\\$&'); // $& means the whole matched string
-    return escapedString.replace(/\\\(\\\.\\\*\\\?\\\)/g, '(.*?)'); // should revert the escaping of match all regex patterns.
 }
 
 export function escapeRegExpForPath(s: string): string {
@@ -43,15 +36,8 @@ export function resolveTestNameStringInterpolation(s: string): string {
     return s.replace(variableRegex, matchAny);
 }
 
-export function exactRegexMatch(s: string): string {
-    return ['^', s, '$'].join('');
-}
-
 export function escapeSingleQuotes(s: string): string {
     return isWindows() ? s : s.replace(/'/g, "'\\''");
 }
 
-export function quote(s: string): string {
-    const q = isWindows() ? '"' : `'`;
-    return [q, s, q].join('');
-}
+export const quote = (s: string) => `"${s}"`;
