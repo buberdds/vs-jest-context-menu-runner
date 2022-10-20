@@ -1,4 +1,5 @@
 import { commands, window, ExtensionContext, Uri } from 'vscode';
+import { escapeRegExpForPath, normalizePath, quote } from './util';
 
 export function activate({ subscriptions }: ExtensionContext) {
   let NEXT_TERM_ID = 1;
@@ -9,7 +10,7 @@ export function activate({ subscriptions }: ExtensionContext) {
       window.showInformationMessage(
         `Running tests in watch mode for ${getFileName(uri)} file.`
       );
-      executeCommandInTerminal(NEXT_TERM_ID++, `--watch ${uri.fsPath}`);
+      executeCommandInTerminal(NEXT_TERM_ID++, `${uri.fsPath}`, ['--watch']);
     }
   );
 
@@ -32,7 +33,7 @@ export function activate({ subscriptions }: ExtensionContext) {
     'jestcontextmenurunner.allWatch',
     () => {
       window.showInformationMessage('Running all tests in watch mode.');
-      executeCommandInTerminal(NEXT_TERM_ID++, '--watch');
+      executeCommandInTerminal(NEXT_TERM_ID++, '', ['--watch']);
     }
   );
 
@@ -49,8 +50,11 @@ function getFileName(uri: Uri): string {
   return searchResult?.groups?.fileName || '';
 }
 
-function executeCommandInTerminal(id: number, cmd = ''): void {
+function executeCommandInTerminal(id: number, fileName = '', params: string[] = []): void {
   const terminal = window.createTerminal(`Ext Terminal #${id}`);
+  let command = `npm run env -- jest --color`;
+  command += params.length > 0 ? ` ${params.join(' ')}` : '';
+  command += fileName ? ` ${quote(escapeRegExpForPath(normalizePath(fileName)))}` : '';
   terminal.show(true);
-  terminal.sendText(`npm run env -- jest --color ${cmd}`);
+  terminal.sendText(command);
 }
