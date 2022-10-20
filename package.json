@@ -9,7 +9,7 @@
     "url": "https://github.com/buberdds/vs-jest-context-menu-runner"
   },
   "homepage": "https://github.com/buberdds/vs-jest-context-menu-runner#readme",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "engines": {
     "vscode": "^1.57.0"
   },

@@ -4,11 +4,15 @@ All notable changes to the "jestcontextmenurunner" extension will be documented 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.0.6] - 2022-10-20
+
+- handle Next.js specific test file names
+
 ## [0.0.5] - 2022-08-02
 
 ### Added
 
-- additional file extension
+- handle additional test file names
 
 ## [0.0.3]
 
